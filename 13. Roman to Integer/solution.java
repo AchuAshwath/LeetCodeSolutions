@@ -5,23 +5,49 @@ class Solution {
             switch(s.charAt(i)){
                 case 'I':
                     result += 1;
+                    break;
                 case 'V':
-                    if(s.charAt(i-1)== 'I'){
+                    if(i >0 && s.charAt(i-1)== 'I'){
                         result += 3;
                     }else{
                         result += 5;
                     }
+                    break;
                 case 'X':
-                    result +=10;
+                    if(i >0 && s.charAt(i-1)== 'I'){
+                        result += 8;
+                    }else{
+                        result +=10;
+                    }
+                    break;
                 case 'L':
+                    if(i >0 && s.charAt(i-1)== 'X'){
+                        result += 30;
+                    }else{
                     result += 50;
+                    }
+                    break;
                 case 'C':
-                    result += 100;
+                    if(i >0 && s.charAt(i-1)== 'X'){
+                        result += 80;
+                    }else{
+                        result += 100;
+                    } 
+                    break;
                 case 'D':
-                    result += 500;
+                    if(i > 0 && s.charAt(i-1)== 'C'){
+                        result += 300;
+                    }else{
+                        result += 500;
+                    }
+                    break;
                 case 'M':
-                    result += 1000;
-                
+                    if(i > 0 && s.charAt(i-1)== 'C'){
+                        result += 800;
+                    }else{
+                        result += 1000;
+                    }
+                    break;
             }
         }   
         return result; 
