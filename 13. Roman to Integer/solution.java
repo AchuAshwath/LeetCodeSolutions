@@ -1,49 +1,33 @@
-class Solution {
+// 5ms  beats 59.90% , 44.90mb beats 26.08%
+import java.util.HashMap;
+import java.util.Map;
+
+class AlgoSolution{
     public int romanToInt(String s) {
-        int result = 0;
-        for(int i = 0; i < s.length(); i++){
-            switch(s.charAt(i)){
-                case 'I':
-                    result += 1;
-                    break;
-                case 'V':
-                    if(i >0 && s.charAt(i-1)== 'I')
-                        result += 3;
-                    else
-                        result += 5;
-                    break;
-                case 'X':
-                    if(i >0 && s.charAt(i-1)== 'I')
-                        result += 8;
-                    else
-                        result +=10;
-                    break;
-                case 'L':
-                    if(i >0 && s.charAt(i-1)== 'X')
-                        result += 30;
-                    else
-                    result += 50;
-                    break;
-                case 'C':
-                    if(i >0 && s.charAt(i-1)== 'X')
-                        result += 80;
-                    else
-                        result += 100;
-                    break;
-                case 'D':
-                    if(i > 0 && s.charAt(i-1)== 'C')
-                        result += 300;
-                    else
-                        result += 500;
-                    break;
-                case 'M':
-                    if(i > 0 && s.charAt(i-1)== 'C')
-                        result += 800;
-                    else
-                        result += 1000;
-                    break;
+        Map<Character, Integer> d = new HashMap<>();
+        d.put('I', 1);
+        d.put('V', 5);
+        d.put('X', 10);
+        d.put('L', 50);
+        d.put('C', 100);
+        d.put('D', 500);
+        d.put('M', 1000);
+
+        int summ = 0;
+        int n = s.length();
+        int i = 0;
+
+        while (i < n) {
+            if (i < n - 1 && d.get(s.charAt(i)) < d.get(s.charAt(i + 1))) {
+                summ += d.get(s.charAt(i + 1)) - d.get(s.charAt(i));
+                i += 2;
+            } else {
+                summ += d.get(s.charAt(i));
+                i++;
             }
-        }   
-        return result; 
+        }
+
+        return summ;
     }
 }
+
