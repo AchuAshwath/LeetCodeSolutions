@@ -1,4 +1,4 @@
-class Solution{
+class solution{
     public int findClosestNumber(int[] nums){
         int closest = nums[0];
         for(int num: nums){

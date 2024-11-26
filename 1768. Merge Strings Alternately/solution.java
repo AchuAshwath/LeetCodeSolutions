@@ -1,4 +1,4 @@
-class Solution {
+class solution {
     public String mergeAlternately(String word1, String word2) {
         int Word1Length = word1.length(), Word2Length = word2.length();
         int Word1Slider = 0, Word2Slider = 0;
